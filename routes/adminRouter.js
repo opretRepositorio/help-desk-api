@@ -14,9 +14,6 @@ admin_router.route("/get_user/by_id").post(admin_controller.GetUserById);
 // Router obtiene usuario por usuario_codigo con POST
 admin_router.route("/get_user/by_usuario_codigo").post(admin_controller.GetUserByCodigoUsuario);
 
-// Router obtiene usuario por usuario_codigo con POST
-admin_router.route("/register/validate_token").post(admin_controller.ValidateTokenExpirationDate);
-
 // Router obtiene usuario por usuario_correo con POST
 admin_router.route("/get_user/by_usuario_correo").post(admin_controller.GetUserByCorreoUsuario);
 

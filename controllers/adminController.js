@@ -1,98 +1,115 @@
-const adminModel = require('../models/adminModel')
+const adminModel = require('../models/adminModel');
 
-// Controlador que obtiene todos los usuario de la base de datos
+// Controlador que obtiene todos los usuarios de la base de datos
 exports.GetUsers = async (req, res, next) => {
-    let admin = new adminModel();
-    const result = await admin.GetUsers();
-    console.log(result);
-
-    res.status(200).send( { admin: result } );
+    try {
+        let admin = new adminModel();
+        const result = await admin.GetUsers();
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 }
 
-// Controlador que obtiene usuario por usuario_correo y usuario_password
+// Controlador que obtiene usuario por usuario_id
 exports.GetUserById = async (req, res, next) => {
-    let { id_usuario } = req.body;
-    let admin = new adminModel();
-    const result = await admin.GetUserById(id_usuario);
-    console.log(result);
-    
-    res.status(200).send( { admin: result } );
+    try {
+        let { id_usuario } = req.body;
+        let admin = new adminModel();
+        const result = await admin.GetUserById(id_usuario);
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 }
 
-// Controlador que obtiene usuario por usuario_correo y usuario_password
+// Controlador que obtiene usuario por usuario_codigo
 exports.GetUserByCodigoUsuario = async (req, res, next) => {
-    let { usuario_codigo } = req.body;
-    let admin = new adminModel();
-    const result = await admin.GetUserByCodigoUsuario(usuario_codigo);
-    console.log(result);
-    
-    res.status(200).send( { admin: result } );
+    try {
+        let { usuario_codigo } = req.body;
+        let admin = new adminModel();
+        const result = await admin.GetUserByCodigoUsuario(usuario_codigo);
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 }
 
-
-// Controlador que obtiene usuario por usuario_correo y usuario_password
+// Controlador que obtiene usuario por usuario_correo
 exports.GetUserByCorreoUsuario = async (req, res, next) => {
-    let { usuario_correo } = req.body;
-    let admin = new adminModel();
-    const result = await admin.GetUserByCorreoUsuario(usuario_correo);
-    console.log(result);
-    
-    res.status(200).send( { admin: result } );
+    try {
+        let { usuario_correo } = req.body;
+        let admin = new adminModel();
+        const result = await admin.GetUserByCorreoUsuario(usuario_correo);
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 }
 
 // Controlador que agrega un usuario / agente al sistema
 exports.SetUser = async (req, res, next) => {
-    let {
-        usuario_nombre,
-        usuario_codigo,
-        usuario_correo,
-        usuario_password,
-        usuario_telefono,
-        usuario_celular,
-        usuario_cargo  
-    } = req.body;
-    
-    let admin = new adminModel();
-    const result = await admin.SetUser(
-        usuario_nombre,
-        usuario_codigo,
-        usuario_correo,
-        usuario_password,
-        usuario_telefono,
-        usuario_celular,
-        usuario_cargo  
-    );
-    console.log(result);
-
-    res.status(200).send( { admin: result } );
+    try {
+        let {
+            usuario_nombre,
+            usuario_codigo,
+            usuario_correo,
+            usuario_password,
+            usuario_telefono,
+            usuario_celular,
+            usuario_cargo  
+        } = req.body;
+        
+        let admin = new adminModel();
+        const result = await admin.SetUser(
+            usuario_nombre,
+            usuario_codigo,
+            usuario_correo,
+            usuario_password,
+            usuario_telefono,
+            usuario_celular,
+            usuario_cargo  
+        );
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 }
 
 // Envia un link a correo electronico del usuario que se registrara : solo el usuario tipo administrador lo puede enviar
 exports.SendRegisterLink = async (req, res, next) => {
-    let {
-        mailTo,
-    } = req.body;
-
-    let admin = new adminModel();
-    const result = await admin.SendRegisterLink(
-        mailTo,
-    );
-    console.log(result);
-
-    res.status(200).send( { admin: result } );
+    try {
+        let { mailTo } = req.body;
+        let admin = new adminModel();
+        const result = await admin.SendRegisterLink(mailTo);
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 }
 
-// Valida si el token existe y si no caduco la fecha de uso
+// Valida si el token existe y si no caducó la fecha de uso
 exports.ValidateTokenExpiration = async (req, res, next) => {
-    let {
-        token,
-    } = req.body;
-
-    let admin = new adminModel();
-    const result = await admin.ValidateTokenExpiration(
-        token,
-    );
-    console.log(result);
-
-    res.status(200).send( { admin: result } );
+    try {
+        let { token } = req.body;
+        let admin = new adminModel();
+        const result = await admin.ValidateTokenExpiration(token);
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 }
