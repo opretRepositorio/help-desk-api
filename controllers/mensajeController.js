@@ -9,7 +9,11 @@ exports.GetMensajeById = async (req, res, next) => {
         res.status(200).send({ mensaje: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -22,7 +26,11 @@ exports.GetMensajeByIdChat = async (req, res, next) => {
         res.status(200).send({ mensaje: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,7 +43,11 @@ exports.GetMensajeByHora = async (req, res, next) => {
         res.status(200).send({ mensaje: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -48,7 +60,11 @@ exports.GetMensajeByMensaje = async (req, res, next) => {
         res.status(200).send({ _mensaje: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -61,7 +77,11 @@ exports.GetMensajeByVisto = async (req, res, next) => {
         res.status(200).send({ mensaje: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -74,7 +94,11 @@ exports.SetMensaje = async (req, res, next) => {
         res.status(200).send({ _mensaje: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -87,6 +111,10 @@ exports.UpdateMensajeVisto = async (req, res, next) => {
         res.status(200).send({ mensaje: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

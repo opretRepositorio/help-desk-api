@@ -9,7 +9,11 @@ exports.GetAveriaById = async (req, res, next) => {
         res.status(200).send({ averia: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -22,7 +26,11 @@ exports.GetAveriaByNombre = async (req, res, next) => {
         res.status(200).send({ averia: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,6 +43,10 @@ exports.SetAveria = async (req, res, next) => {
         res.status(200).send({ averia: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

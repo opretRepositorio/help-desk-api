@@ -9,7 +9,11 @@ exports.GetUsers = async (req, res, next) => {
         res.status(200).send({ admin: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -23,7 +27,11 @@ exports.GetUserById = async (req, res, next) => {
         res.status(200).send({ admin: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }
 
@@ -37,7 +45,11 @@ exports.GetUserByCodigoUsuario = async (req, res, next) => {
         res.status(200).send({ admin: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }
 
@@ -51,7 +63,11 @@ exports.GetUserByCorreoUsuario = async (req, res, next) => {
         res.status(200).send({ admin: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }
 
@@ -82,7 +98,11 @@ exports.SetUser = async (req, res, next) => {
         res.status(200).send({ admin: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }
 
@@ -96,7 +116,11 @@ exports.SendRegisterLink = async (req, res, next) => {
         res.status(200).send({ admin: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }
 
@@ -110,6 +134,10 @@ exports.ValidateTokenExpiration = async (req, res, next) => {
         res.status(200).send({ admin: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }

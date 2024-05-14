@@ -11,7 +11,11 @@ exports.GetArchivoById = async (req, res, next) => {
         res.status(200).send({ archivo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -25,7 +29,11 @@ exports.GetArchivoByIdTicket = async (req, res, next) => {
         res.status(200).send({ archivo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -39,7 +47,11 @@ exports.GetArchivoByIdRespuesta = async (req, res, next) => {
         res.status(200).send({ archivo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }
 
@@ -53,7 +65,11 @@ exports.GetArchivoByIdMensaje = async (req, res, next) => {
         res.status(200).send({ archivo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }
 
@@ -68,6 +84,10 @@ exports.SetArchivo = async (req, res, next) => {
         res.status(200).send({ archivo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
     }
 }

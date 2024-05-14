@@ -8,7 +8,11 @@ exports.GetGrupos = async (req, res, next) => {
         res.status(200).send({ grupos: result[0] });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -21,7 +25,11 @@ exports.GetGrupoById = async (req, res, next) => {
         res.status(200).send({ grupo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -34,7 +42,11 @@ exports.GetGrupoByNombre = async (req, res, next) => {
         res.status(200).send({ grupo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -51,6 +63,10 @@ exports.SetGrupo = async (req, res, next) => {
         res.status(200).send({ grupo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

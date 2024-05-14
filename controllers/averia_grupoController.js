@@ -9,7 +9,11 @@ exports.GetAveriaGrupoById = async (req, res, next) => {
         res.status(200).send({ averia_grupo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -22,7 +26,11 @@ exports.GetAveriaGrupoByIdAveria = async (req, res, next) => {
         res.status(200).send({ averia_grupo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,7 +43,11 @@ exports.GetAveriaGrupoByIdGrupo = async (req, res, next) => {
         res.status(200).send({ averia_grupo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -48,6 +60,10 @@ exports.SetAveriaGrupo = async (req, res, next) => {
         res.status(200).send({ averia_grupo: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

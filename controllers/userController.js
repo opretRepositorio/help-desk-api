@@ -10,7 +10,11 @@ exports.GetUsers = async (req, res, next) => {
         res.status(200).send({ users: result[0] });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -24,7 +28,11 @@ exports.GetUsersByTipo = async (req, res, next) => {
         res.status(200).send({ users: result[0] });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -38,7 +46,11 @@ exports.GetUser = async (req, res, next) => {
         res.status(200).send({ user: result[0] });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -59,7 +71,11 @@ exports.ForgotPassword = async (req, res, next) => {
         res.status(200).send({ user: ifExists });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -71,7 +87,11 @@ exports.ChangePassword = async (req, res, next) => {
         res.status(200).send({ user: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -86,6 +106,10 @@ exports.MatchRecoveryCode = async (req, res, next) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

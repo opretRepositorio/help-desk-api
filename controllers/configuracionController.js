@@ -9,7 +9,11 @@ exports.GetConfiguracionById = async (req, res, next) => {
         res.status(200).send({ configuracion: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -22,7 +26,11 @@ exports.GetConfiguracionByIdGrupo = async (req, res, next) => {
         res.status(200).send({ configuracion: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,7 +43,11 @@ exports.GetConfiguracionByIdUsuario = async (req, res, next) => {
         res.status(200).send({ configuracion: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -48,6 +60,10 @@ exports.SetConfiguracion = async (req, res, next) => {
         res.status(200).send({ configuracion: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

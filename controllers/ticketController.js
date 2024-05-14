@@ -8,7 +8,11 @@ exports.GetTickets = async (req, res, next) => {
         res.status(200).send({ tickets: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -21,7 +25,11 @@ exports.GetTicketById = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -34,7 +42,11 @@ exports.GetTicketByIdCliente = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -47,7 +59,11 @@ exports.GetTicketByEstadoAndIdAgente = async (req, res, next) => {
         res.status(200).send({ ticket: result[0] });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -60,7 +76,11 @@ exports.GetTicketByIdAgente = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -73,7 +93,11 @@ exports.GetTicketByIdAveria = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -86,7 +110,11 @@ exports.GetTicketByIdGrupo = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -99,7 +127,11 @@ exports.GetTicketByFechaCreacion = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -112,7 +144,11 @@ exports.GetTicketByFechaAsignacion = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -125,7 +161,11 @@ exports.GetTicketByFechaResolucion = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -138,7 +178,11 @@ exports.GetTicketByTicketPrioridad = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -151,6 +195,10 @@ exports.SetTicket = async (req, res, next) => {
         res.status(200).send({ ticket: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

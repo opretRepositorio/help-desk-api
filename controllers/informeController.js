@@ -9,7 +9,11 @@ exports.GetInformeById = async (req, res, next) => {
         res.status(200).send({ informe: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -21,7 +25,11 @@ exports.GetInformes = async (req, res, next) => {
         res.status(200).send({ informe: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,7 +43,11 @@ exports.GetInformeByIdTicket = async (req, res, next) => {
         res.status(200).send({ informe: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -49,7 +61,11 @@ exports.GetInformeByIdUsuario = async (req, res, next) => {
         res.status(200).send({ informe: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -62,7 +78,11 @@ exports.GetInformeByFecha = async (req, res, next) => {
         res.status(201).send({ informe: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -76,6 +96,10 @@ exports.SetInforme = async (req, res, next) => {
         res.status(201).send({ informe: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

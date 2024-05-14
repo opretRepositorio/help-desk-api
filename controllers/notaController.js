@@ -9,7 +9,11 @@ exports.GetNotaById = async (req, res, next) => {
         res.status(200).send({ nota: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -22,7 +26,11 @@ exports.GetNotaByIdUsuario = async (req, res, next) => {
         res.status(200).send({ nota: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,7 +43,11 @@ exports.GetNotaByIdTicket = async (req, res, next) => {
         res.status(200).send({ nota: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -48,7 +60,11 @@ exports.GetNotaByNotaFecha = async (req, res, next) => {
         res.status(200).send({ nota: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -61,7 +77,11 @@ exports.GetNotaByNotaEstado = async (req, res, next) => {
         res.status(200).send({ nota: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -74,6 +94,10 @@ exports.SetNota = async (req, res, next) => {
         res.status(200).send({ nota: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

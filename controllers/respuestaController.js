@@ -9,7 +9,11 @@ exports.GetRespuestaById = async (req, res, next) => {
         res.status(200).send({ respuesta: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -22,7 +26,11 @@ exports.GetRespuestaByIdUsuario = async (req, res, next) => {
         res.status(200).send({ respuesta: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,7 +43,11 @@ exports.GetRespuestaByIdTicket = async (req, res, next) => {
         res.status(200).send({ respuesta: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -48,7 +60,11 @@ exports.GetRespuestaByFecha = async (req, res, next) => {
         res.status(200).send({ respuesta: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -61,6 +77,10 @@ exports.SetRespuesta = async (req, res, next) => {
         res.status(200).send({ respuesta: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

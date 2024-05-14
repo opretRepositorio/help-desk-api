@@ -82,6 +82,10 @@ exports.MailListener = async (req, res, next) => {
         imap.connect();
     } catch (ex) {
         console.error('An unexpected error occurred:', ex);
-        return res.status(500).json({ error: 'An unexpected error occurred' });
+        return rres.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 };

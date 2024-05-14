@@ -9,20 +9,28 @@ exports.GetChatById = async (req, res, next) => {
         res.status(200).send({ chat: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
-// exports.GetChatByIdMensaje = async (req, res, next) => {
-//     try {
-//         let { id_mensaje } = req.body;
-//         let chat = new chatModel();
-//         const result = await chat.GetChatByIdMensaje(id_mensaje);
-//         console.log(result);
-//         res.status(201).send({ chat: result });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send({ error: 'Internal Server Error' });
+exports.GetChatByIdMensaje = async (req, res, next) => {
+    try {
+        let { id_mensaje } = req.body;
+        let chat = new chatModel();
+        const result = await chat.GetChatByIdMensaje(id_mensaje);
+        console.log(result);
+        res.status(201).send({ chat: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
 //     }
 // }
 
@@ -37,6 +45,10 @@ exports.SetChat = async (req, res, next) => {
         res.status(200).send({ chat: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

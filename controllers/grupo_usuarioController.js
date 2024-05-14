@@ -9,7 +9,11 @@ exports.GetGrupoUsuarioById = async (req, res, next) => {
         res.status(200).send({ grupo_usuario: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -22,7 +26,11 @@ exports.GetGrupoUsuarioByIdGrupo = async (req, res, next) => {
         res.status(200).send({ grupo_usuario: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -35,7 +43,11 @@ exports.GetGrupoUsuarioByIdUsuario = async (req, res, next) => {
         res.status(200).send({ grupo_usuario: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -48,6 +60,10 @@ exports.SetGrupoUsuario = async (req, res, next) => {
         res.status(200).send({ grupo_usuario: result });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
