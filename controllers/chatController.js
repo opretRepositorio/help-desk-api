@@ -31,8 +31,8 @@ exports.GetChatByIdMensaje = async (req, res, next) => {
             error: 'Internal Server Error', 
             message: error 
         });
-//     }
-// }
+    }
+}
 
 exports.SetChat = async (req, res, next) => {
     try {

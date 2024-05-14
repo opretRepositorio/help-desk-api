@@ -50,8 +50,7 @@ class userModel {
 
     // Un unico usuario por su correo y contraseña
     async GetUser(usuario_correo, usuario_password){
-        let [user, _] = await database.execute(`CALL sp_get_usuario (
-            '${usuario_correo}','${usuario_password}');`);
+        let [user, _] = await database.execute(`CALL sp_get_usuario('${usuario_correo}','${usuario_password}');`);
         return user;
     }
 
