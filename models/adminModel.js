@@ -8,25 +8,25 @@ class adminModel {
 
     // Obtiene todos los usuarios del sistema
     async GetUsers(){
-        let [users, _] = await database.execute('CALL sp_get_usuarios ();');
+        let [_token, _] = await database.execute('CALL sp_get_usuarios ();');
         return users;
     }
 
     // Obtiene usuario por id_usuario con POST
     async GetUserById(id_usuario){
-        let [user, _] = await database.execute(`CALL sp_get_usuario_by_id (${id_usuario});`);
+        let [_token, _] = await database.execute(`CALL sp_get_usuario_by_id (${id_usuario});`);
         return user;
     }
 
     // Obtiene usuario por usuario_codigo con POST
     async GetUserByCodigoUsuario(usuario_codigo){
-        let [user, _] = await database.execute(`CALL sp_get_usuario_by_usuario_codigo (${usuario_codigo});`);
+        let [_token, _] = await database.execute(`CALL sp_get_usuario_by_usuario_codigo (${usuario_codigo});`);
         return user;
     }
 
     // Obtiene usuario por usuario_correo con POST
     async GetUserByCorreoUsuario(usuario_correo){
-        let [user, _] = await database.execute(`CALL sp_get_usuario_by_usuario_correo ('${usuario_correo}');`);
+        let [_token, _] = await database.execute(`CALL sp_get_usuario_by_usuario_correo ('${usuario_correo}');`);
         return user;
     }
 
@@ -72,8 +72,7 @@ class adminModel {
             to: mailTo,
             subject: 'Registro de Nuevo Usuario (Mesa de Ayuda)',
             html: `<p>Use este link para registrarte como nuevo usuario y poder tener acceso a la Mesa de Ayuda.</p>
-            <a href="http://localhost:${process.env.PORT}/register?token=${token}">Registrarse</a>`
-            
+            <a href="http://localhost:${process.env.PORT}/newuser?token=${token}">Registrarse</a>`
         };
 
         transporter.sendMail(mailOptions, function(error, info){
@@ -102,11 +101,18 @@ class adminModel {
 
     // Envia un link a correo electronico del usuario que se registrara : solo el usuario tipo administrador lo puede enviar
     async ValidateTokenExpiration(token){
-        let [user, _] = await database.execute(`CALL sp_get_token (
+        let [_token, _] = await database.execute(`CALL sp_get_token (
             '${token}', 
         );`);
         
-        return user;
+        return token;
+    }
+
+    // Actualiza el token que dicho usuario uso
+    async UpdateToken(token){
+        let [_token, _] = await database.execute(`CALL sp_update_token ('${token}');`);
+        
+        return token;
     }
 }
 

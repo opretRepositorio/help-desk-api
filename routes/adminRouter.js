@@ -26,5 +26,8 @@ admin_router.route("/register/send_link").post(admin_controller.SendRegisterLink
 // Router para validar token si puede o no finalizar proceso de nuevo usuario
 admin_router.route("/register/validate_token").post(admin_controller.ValidateTokenExpiration);
 
+// Router para actualizar token y finalizar proceso de nuevo usuario
+admin_router.route("/register/update_token").post(admin_controller.UpdateToken);
+
 // module para exportar admin_router, acceso publico a otros modulos 
 module.exports = admin_router;

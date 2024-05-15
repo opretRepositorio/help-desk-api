@@ -141,3 +141,20 @@ exports.ValidateTokenExpiration = async (req, res, next) => {
             });
     }
 }
+
+exports.UpdateToken = async (req, res, next) => {
+    try {
+        let { token } = req.body;
+        let admin = new adminModel();
+        const result = await admin.UpdateToken(token);
+        console.log(result);
+        res.status(200).send({ admin: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
+    }
+}
