@@ -116,4 +116,4 @@ class adminModel {
     }
 }
 
-module.exports = adminModel;
+module.exports = adminModel; 
