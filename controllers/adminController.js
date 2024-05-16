@@ -130,7 +130,8 @@ exports.ValidateTokenExpiration = async (req, res, next) => {
         let { token } = req.body;
         let admin = new adminModel();
         const result = await admin.ValidateTokenExpiration(token);
-        result[0].length === 0 ? res.status(200).send({ token: false }) : res.status(200).send({ token: true, email: token[0].user_email });
+        console.log(result[0][0].user_email)
+        result[0].length === 0 ? res.status(200).send({ token: false }) : res.status(200).send({ token: true, email: result[0][0].user_email });
     } catch (error) {
         console.error(error);
         res.status(500).send(

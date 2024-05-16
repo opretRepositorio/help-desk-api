@@ -79,7 +79,7 @@ class userModel {
     async ChangePassword(usuario_password, usuario_correo){
         let [user, _] = await database.execute(`CALL sp_update_change_password('${usuario_password}', '${usuario_correo}');`);
         return user;
-    }
+    }                      
 
     // Genera codigo aleatorio para la recuperacion de password
     GenerateRandomInteger(max) {

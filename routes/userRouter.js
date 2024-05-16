@@ -11,8 +11,8 @@ user_router.route("/get_user/login").post(user_controller.GetUser);
 // Router obtiene usuarios por tipo de usuario con POST
 user_router.route("/get_users/by_tipo_usuario").post(user_controller.GetUsersByTipo);
 
-// Router inserta informacion introducida por el usuario con POST
-// user_router.route("/set_user/register").post(user_controller.SetUser);
+// Router para confirmar contrasena de usuario para finalizar registro del mismo con POST
+user_router.route("/set_user/confirm_password").post(user_controller.ConfirmPassword);
 
 // Router para recuperar informacion o credenciales como la password del usuario
 user_router.route("/get_user/forgot_password").post(user_controller.ForgotPassword);
