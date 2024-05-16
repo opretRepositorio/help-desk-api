@@ -113,7 +113,7 @@ exports.SendRegisterLink = async (req, res, next) => {
         let admin = new adminModel();
         const result = await admin.SendRegisterLink(mailTo);
         console.log(result);
-        res.status(200).send({ admin: result });
+        res.status(200).send({ link: result });
     } catch (error) {
         console.error(error);
         res.status(500).send(
@@ -130,8 +130,7 @@ exports.ValidateTokenExpiration = async (req, res, next) => {
         let { token } = req.body;
         let admin = new adminModel();
         const result = await admin.ValidateTokenExpiration(token);
-        console.log(result);
-        res.status(200).send({ admin: result });
+        result[0].length === 0 ? res.status(200).send({ token: false }) : res.status(200).send({ token: true });
     } catch (error) {
         console.error(error);
         res.status(500).send(
@@ -148,7 +147,7 @@ exports.UpdateToken = async (req, res, next) => {
         let admin = new adminModel();
         const result = await admin.UpdateToken(token);
         console.log(result);
-        res.status(200).send({ admin: result });
+        res.status(200).send({ token: result });
     } catch (error) {
         console.error(error);
         res.status(500).send(

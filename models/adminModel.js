@@ -91,10 +91,7 @@ class adminModel {
     async CreateTemporaryToken(length, mailTo){
         const token = crypto.randomBytes(length).toString('hex');
 
-        await database.execute(`CALL sp_set_token (
-            '${token}',
-            '${mailTo}'
-        );`);
+        await database.execute(`CALL sp_set_token ('${token}','${mailTo}');`);
 
         return token;
     }
@@ -102,7 +99,7 @@ class adminModel {
     // Envia un link a correo electronico del usuario que se registrara : solo el usuario tipo administrador lo puede enviar
     async ValidateTokenExpiration(token){
         let [_token, _] = await database.execute(`CALL sp_get_token ('${token}');`);
-        
+
         return _token;
     }
 
