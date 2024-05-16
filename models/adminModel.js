@@ -70,8 +70,7 @@ class adminModel {
             from: 'helpdeskopret@gmail.com',
             to: mailTo,
             subject: 'Registro de Nuevo Usuario (Mesa de Ayuda)',
-            html: `<p>Use este link para registrarte como nuevo usuario y poder tener acceso a la Mesa de Ayuda.</p>
-            <a href="http://localhost:5173/newuser?token=${token}">Registrarse</a>`
+            html: `<p>Use este link para <a href="http://localhost:5173/newuser?token=${token}">Registrarse</a> como nuevo usuario y poder tener acceso a la Mesa de Ayuda.</p>`
         };
 
         transporter.sendMail(mailOptions, function(error, info){
