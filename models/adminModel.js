@@ -71,7 +71,7 @@ class adminModel {
             to: mailTo,
             subject: 'Registro de Nuevo Usuario (Mesa de Ayuda)',
             html: `<p>Use este link para registrarte como nuevo usuario y poder tener acceso a la Mesa de Ayuda.</p>
-            <a href="http://localhost:${process.env.PORT}/newuser?token=${token}">Registrarse</a>`
+            <a href="http://localhost:5173/newuser?token=${token}">Registrarse</a>`
         };
 
         transporter.sendMail(mailOptions, function(error, info){
