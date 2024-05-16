@@ -10,82 +10,74 @@ const imapConfig = {
     tlsOptions: { rejectUnauthorized: false }
 };
 
+// Contralador para obtener mensajes no leido del correo "helpdeskopret@gmail.com"
 exports.MailListener = async (req, res, next) => {
-    const unseenMessages = [];
-
     try {
         const imap = new Imap(imapConfig);
+        const unseenMessages = []; // Array para almacenar la información de los mensajes no leídos
+
+        function openInbox(cb) {
+            imap.openBox('INBOX', true, cb);
+        }
 
         imap.once('ready', () => {
-            imap.openBox('INBOX', true, (err, box) => {
-                if (err) {
-                    console.error('Error opening INBOX:', err);
-                    return res.status(500).json({ error: 'An error occurred while opening INBOX' });
-                }
-
+            openInbox((err, box) => {
+                if (err) throw err;
                 imap.search(['UNSEEN'], (err, results) => {
-                    if (err) {
-                        console.error('Error searching UNSEEN messages:', err);
-                        imap.end();
-                        return res.status(500).json({ error: 'An error occurred while searching UNSEEN messages' });
-                    }
+                    if (err) throw err;
 
                     if (results.length === 0) {
+                        // No hay mensajes no leídos encontrados, finalizar la conexión IMAP y enviar una respuesta vacía
                         imap.end();
-                        return res.json([]);
+                        res.json([]);
+                        return;
                     }
 
                     const fetch = imap.fetch(results, { bodies: '', markSeen: true });
 
                     fetch.on('message', (msg, seqno) => {
-                        const email = {};
+                        const email = {}; // Objeto para almacenar la información de cada correo electrónico
 
                         msg.on('body', async (stream, info) => {
-                            try {
-                                const parsed = await simpleParser(stream);
-                                email.from = parsed.from.text;
-                                email.subject = parsed.subject;
-                                email.date = parsed.date;
-                                email.text = parsed.text;
-                                unseenMessages.push(email);
-                            } catch (parseError) {
-                                console.error('Error parsing email:', parseError);
-                                return res.status(500).json({ error: 'An error occurred while parsing emails' });
-                            }
+                            const parsed = await simpleParser(stream);
+
+                            email.from = parsed.from.text;
+                            email.subject = parsed.subject;
+                            email.date = parsed.date; 
+                            email.text = parsed.text;
+                            //email.html = parsed.html;
+                            //email.attachments = parsed.attachments;
+                            unseenMessages.push(email); // Agregar el correo electrónico al array de mensajes no leídos
                         });
                     });
 
-                    fetch.once('error', (fetchError) => {
-                        console.error('Fetch error:', fetchError);
-                        imap.end();
-                        return res.status(500).json({ error: 'An error occurred while fetching emails' });
+                    fetch.once('error', (err) => {
+                        console.error('Fetch error:', err);
+                        res.status(500).json({ error: 'An error occurred while fetching emails' });
                     });
 
                     fetch.once('end', () => {
-                        imap.end();
-                        return res.json(unseenMessages);
+                        imap.end(); // Finalizar la conexión IMAP
+                        
                     });
                 });
             });
         });
 
-        imap.once('error', (imapError) => {
-            console.error('IMAP error:', imapError);
-            return res.status(500).json({ error: 'An error occurred while connecting to IMAP server' });
+        imap.once('error', (err) => {
+            console.error('IMAP error:', err);
+            res.status(500).json({ error: 'An error occurred while processing your request' });
         });
 
         imap.once('end', () => {
+            console.log(unseenMessages);
+            res.json(unseenMessages);  // Enviar los mensajes no leídos como respuesta JSON
             console.log('Connection ended');
-            return res.json(unseenMessages);
         });
 
-        imap.connect();
+        imap.connect(); // Conectar al servidor IMAP
     } catch (ex) {
-        console.error('An unexpected error occurred:', ex);
-        return rres.status(500).send(
-        { 
-            error: 'Internal Server Error', 
-            message: error 
-        });
+        console.log('An error occurred:', ex);
+        res.status(500).json({ error: 'An error occurred while processing your request' });
     }
 };
