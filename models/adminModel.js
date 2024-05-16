@@ -35,7 +35,7 @@ class adminModel {
         usuario_nombre,
         usuario_codigo,
         usuario_correo,
-        usuario_password,
+        // usuario_password,
         usuario_tipo,
         usuario_telefono,
         usuario_celular,
@@ -45,12 +45,13 @@ class adminModel {
             '${usuario_nombre}', 
             '${usuario_codigo}', 
             '${usuario_correo}', 
-            '${usuario_password}', 
             '${usuario_tipo}', 
             '${usuario_telefono}', 
             '${usuario_celular}', 
             '${usuario_cargo}'
         );`);
+
+        this.SendRegisterLink(usuario_correo);
         
         return user;
     }

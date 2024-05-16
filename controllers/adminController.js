@@ -78,7 +78,7 @@ exports.SetUser = async (req, res, next) => {
             usuario_nombre,
             usuario_codigo,
             usuario_correo,
-            usuario_password,
+            // usuario_password,
             usuario_telefono,
             usuario_celular,
             usuario_cargo  
@@ -89,7 +89,7 @@ exports.SetUser = async (req, res, next) => {
             usuario_nombre,
             usuario_codigo,
             usuario_correo,
-            usuario_password,
+            // usuario_password,
             usuario_telefono,
             usuario_celular,
             usuario_cargo  

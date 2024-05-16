@@ -60,7 +60,7 @@ exports.ConfirmPassword = async (req, res, next) => {
         let user = new userModel();
         const result = await user.ChangePassword(usuario_password, usuario_correo);
         
-        res.status(200).send({ user: ifExists });
+        res.status(200).send({ user: result });
     } catch (error) {
         console.error(error);
         res.status(500).send(
