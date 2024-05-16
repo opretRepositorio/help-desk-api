@@ -38,12 +38,15 @@ exports.MailListener = async (req, res, next) => {
                     fetch.on('message', (msg, seqno) => {
                         const email = {}; // Objeto para almacenar la información de cada correo electrónico
 
+                        msg.once('attributes', (attrs) => {
+                            email.uid = attrs.uid; // Almacenar el UID del mensaje en el objeto email
+                        });
                         msg.on('body', async (stream, info) => {
                             const parsed = await simpleParser(stream);
 
                             email.from = parsed.from.text;
                             email.subject = parsed.subject;
-                            email.date = parsed.date; 
+                            email.date = parsed.date;
                             email.text = parsed.text;
                             //email.html = parsed.html;
                             //email.attachments = parsed.attachments;
@@ -58,7 +61,7 @@ exports.MailListener = async (req, res, next) => {
 
                     fetch.once('end', () => {
                         imap.end(); // Finalizar la conexión IMAP
-                        
+
                     });
                 });
             });
