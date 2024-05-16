@@ -50,8 +50,6 @@ class adminModel {
             '${usuario_celular}', 
             '${usuario_cargo}'
         );`);
-
-        this.SendRegisterLink(usuario_correo);
         
         return user;
     }
