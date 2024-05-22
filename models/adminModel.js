@@ -39,7 +39,7 @@ class adminModel {
         usuario_tipo,
         usuario_telefono,
         usuario_celular,
-        usuario_cargo
+        usuario_cargo,
     ){
         let [user, _] = await database.execute(`CALL sp_set_usuario (
             '${usuario_nombre}', 

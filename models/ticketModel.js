@@ -106,6 +106,34 @@ class ticketModel {
         );`);
         return ticket;
     }
+
+    // Actualiza las caracteristicas del ticket en el sistema
+    async UpdateTicket(
+        ticket_descripcion,
+        ticket_tipo,
+        ticket_estado,
+        ticket_prioridad,
+        id_grupo,
+        id_agente,
+        ticket_fecha_creacion,
+        ticket_fecha_asignado,
+        ticket_fecha_resolucion,
+        ticket_asunto,
+    ){
+        let [ticket, _] = await database.execute(`CALL sp_update_ticket (
+            '${ticket_descripcion}', 
+            '${ticket_tipo}', 
+            '${ticket_estado}', 
+            '${ticket_prioridad}', 
+            '${id_grupo}', 
+            '${id_agente}', 
+            '${ticket_fecha_creacion}', 
+            '${ticket_fecha_asignado}', 
+            '${ticket_fecha_resolucion}', 
+            '${ticket_asunto}', 
+        );`);
+        return ticket;
+    }
 }
 
 module.exports = ticketModel;

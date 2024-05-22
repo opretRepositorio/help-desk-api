@@ -35,8 +35,11 @@ ticket_router.route("/get_ticket/by_fecha_resolucion").post(ticket_controller.Ge
 // Router obtiene todos los tickets con GET
 ticket_router.route("/get_ticket/by_ticket_prioridad").post(ticket_controller.GetTicketByTicketPrioridad);
 
-// Router registra un ticket al sistema
+// Router registra un ticket al sistema con metodo POST
 ticket_router.route("/set_ticket").post(ticket_controller.SetTicket);
+
+// Router que actualizar un ticket en el sistema con metodo POST
+ticket_router.route("/update_ticket").post(ticket_controller.UpdateTicket);
 
 // module para exportar ticket_router, acceso publico a otros modulos 
 module.exports = ticket_router;

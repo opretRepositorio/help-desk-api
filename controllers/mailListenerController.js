@@ -1,5 +1,8 @@
 const Imap = require('imap');
 const { simpleParser } = require('mailparser');
+const ticketModel = require('../models/ticketModel');
+const adminModel = require('../models/adminModel');
+const userModel = require('../models/userModel');
 
 const imapConfig = {
     user: 'helpdeskopret@gmail.com',
@@ -17,7 +20,7 @@ exports.MailListener = async (req, res, next) => {
         const unseenMessages = []; // Array para almacenar la información de los mensajes no leídos
 
         function openInbox(cb) {
-            imap.openBox('INBOX', true, cb);
+            imap.openBox('INBOX', false, cb);
         }
 
         imap.once('ready', () => {
@@ -76,6 +79,45 @@ exports.MailListener = async (req, res, next) => {
             console.log(unseenMessages);
             res.json(unseenMessages);  // Enviar los mensajes no leídos como respuesta JSON
             console.log('Connection ended');
+
+            let ticket = new ticketModel();
+            let admin = new adminModel();
+            let user = new userModel();
+
+            unseenMessages.forEach(item => {
+                if (admin.SetUser(
+                    item.from.split("\" \<")[0].replace('\"', '\0'), // usuario_nombre
+                    item.from.split("\" \<")[1].replace('\>', '\0'), // usuario_codigo
+                    item.from.split("\" \<")[1].replace('\>', '\0'), // usuario_correo
+                    // usuario_password,
+                    ' ', // usuario_telefono
+                    ' ', // usuario_celular
+                    ' ', // usuario_cargo
+                    'usuario'
+                ).affectedRows > 0)
+                {
+                    const result = user.GetUserByCodigo(item.from.split("\" \<")[1].replace('\>', '\0'));
+
+                    ticket.SetTicket(
+                        item.text, 
+                        result.idusuario, 
+                        'Averia', 
+                        'Abierto', 
+                        'Baja', 
+                        1, 
+                        // id_agente, 
+                        // ticket_fecha_asignado, 
+                        // ticket_fecha_resolucion, 
+                        item.subject, 
+                        // id_averia, 
+                        // ticket_programa, 
+                        item.subject
+                    );
+                }
+                else {
+
+                }
+            });
         });
 
         imap.connect(); // Conectar al servidor IMAP

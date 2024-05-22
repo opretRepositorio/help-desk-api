@@ -54,6 +54,12 @@ class userModel {
         return user;
     }
 
+    // Un unico usuario por su codigo
+    async GetUserByCodigo(usuario_codigo){
+        let [user, _] = await database.execute(`CALL sp_get_usuario_by_usuario_codigo('${usuario_codigo}');`);
+        return user;
+    }
+
     // Inserta o registra a la base de datos un nuevo usuario al sistema
     // async SetUser(
     //     usuario_nombre,
