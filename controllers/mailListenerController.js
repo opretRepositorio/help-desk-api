@@ -59,7 +59,7 @@ exports.MailListener = async (req, res, next) => {
 
                     fetch.once('error', (err) => {
                         console.error('Fetch error:', err);
-                        res.status(500).json({ error: 'An error occurred while fetching emails' });
+                        return res.status(500).json({ error: 'An error occurred while fetching emails' });
                     });
 
                     fetch.once('end', () => {
@@ -72,7 +72,7 @@ exports.MailListener = async (req, res, next) => {
 
         imap.once('error', (err) => {
             console.error('IMAP error:', err);
-            res.status(500).json({ error: 'An error occurred while processing your request' });
+            return res.status(500).json({ error: 'An error occurred while processing your request' });
         });
 
         imap.once('end', () => {
@@ -123,6 +123,6 @@ exports.MailListener = async (req, res, next) => {
         imap.connect(); // Conectar al servidor IMAP
     } catch (ex) {
         console.log('An error occurred:', ex);
-        res.status(500).json({ error: 'An error occurred while processing your request' });
+        return res.status(500).json({ error: 'An error occurred while processing your request' });
     }
 };
