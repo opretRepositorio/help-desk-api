@@ -205,9 +205,35 @@ exports.SetTicket = async (req, res, next) => {
 
 exports.UpdateTicket = async (req, res, next) => {
     try {
-        let { ticket_descripcion, ticket_tipo, ticket_estado, ticket_prioridad, id_grupo, id_agente, ticket_fecha_asignado, ticket_fecha_resolucion, ticket_asunto } = req.body;
+        let { 
+            id_ticket,
+            ticket_descripcion, 
+            ticket_tipo, 
+            ticket_estado, 
+            ticket_prioridad, 
+            id_grupo, 
+            id_agente, 
+            id_cliente,
+            ticket_fecha_creacion,
+            ticket_fecha_asignado, 
+            ticket_fecha_resolucion, 
+            ticket_asunto 
+        } = req.body;
         let ticket = new ticketModel();
-        const result = await ticket.UpdateTicket(ticket_descripcion, ticket_tipo, ticket_estado, ticket_prioridad, id_grupo, id_agente, ticket_fecha_asignado, ticket_fecha_resolucion, ticket_asunto);
+        const result = await ticket.UpdateTicket(
+            id_ticket,
+            ticket_descripcion, 
+            ticket_tipo, 
+            ticket_estado, 
+            ticket_prioridad, 
+            id_grupo, 
+            id_agente, 
+            id_cliente,
+            ticket_fecha_creacion,
+            ticket_fecha_asignado, 
+            ticket_fecha_resolucion, 
+            ticket_asunto
+        );
         console.log(result);
         res.status(200).send({ ticket: result });
     } catch (error) {
