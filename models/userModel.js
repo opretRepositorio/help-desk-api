@@ -60,6 +60,12 @@ class userModel {
         return user;
     }
 
+    // Un unico usuario por su correo
+    async GetUserByCorreo(usuario_correo){
+        let [user, _] = await database.execute(`CALL sp_get_usuario_by_usuario_correo('${usuario_correo}');`);
+        return user;
+    }
+
     // Inserta o registra a la base de datos un nuevo usuario al sistema
     // async SetUser(
     //     usuario_nombre,

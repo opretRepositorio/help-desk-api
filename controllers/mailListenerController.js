@@ -13,7 +13,7 @@ const imapConfig = {
     tlsOptions: { rejectUnauthorized: false }
 };
 
-// Contralador para obtener mensajes no leido del correo "helpdeskopret@gmail.com"
+// Controlador para obtener mensajes no leido del correo "helpdeskopret@gmail.com"
 exports.MailListener = async (req, res, next) => {
     try {
         const imap = new Imap(imapConfig);
@@ -64,7 +64,6 @@ exports.MailListener = async (req, res, next) => {
 
                     fetch.once('end', () => {
                         imap.end(); // Finalizar la conexión IMAP
-
                     });
                 });
             });
@@ -75,7 +74,7 @@ exports.MailListener = async (req, res, next) => {
             return res.status(500).json({ error: 'An error occurred while processing your request' });
         });
 
-        imap.once('end', () => {
+        imap.once('end', async () => {
             console.log(unseenMessages);
             res.json(unseenMessages);  // Enviar los mensajes no leídos como respuesta JSON
             console.log('Connection ended');
@@ -84,40 +83,55 @@ exports.MailListener = async (req, res, next) => {
             let admin = new adminModel();
             let user = new userModel();
 
-            unseenMessages.forEach(item => {
-                if (admin.SetUser(
-                    item.from.split("\" \<")[0].replace('\"', '\0'), // usuario_nombre
-                    item.from.split("\" \<")[1].replace('\>', '\0'), // usuario_codigo
-                    item.from.split("\" \<")[1].replace('\>', '\0'), // usuario_correo
-                    // usuario_password,
+            // Para que esto funcione no deben de haber mas de un registro de un mismo correo electronico en la base de datos
+            await Promise.all(unseenMessages.map(async (item) => {
+                const usuario_nombre = item.from.split("\" <")[0].replace('\"', '\0');
+                const usuario_codigo_correo = item.from.split("\" <")[1].replace('>', '\0');
+                
+                const setUserResult = await admin.SetUser(
+                    usuario_nombre,
+                    usuario_codigo_correo,
+                    usuario_codigo_correo,
                     ' ', // usuario_telefono
                     ' ', // usuario_celular
                     ' ', // usuario_cargo
                     'usuario'
-                ).affectedRows > 0)
-                {
-                    const result = user.GetUserByCodigo(item.from.split("\" \<")[1].replace('\>', '\0'));
+                );
 
-                    ticket.SetTicket(
-                        item.text, 
-                        result.idusuario, 
-                        'Averia', 
-                        'Abierto', 
-                        'Baja', 
-                        1, 
-                        // id_agente, 
-                        // ticket_fecha_asignado, 
-                        // ticket_fecha_resolucion, 
-                        item.subject, 
-                        // id_averia, 
-                        // ticket_programa, 
-                        item.subject
-                    );
-                }
-                else {
+                console.log(setUserResult.affectedRows > 0 ? 'if' : 'else');
+                console.log(usuario_codigo_correo);
 
-                }
-            });
+                const result = await user.GetUserByCorreo(usuario_codigo_correo);
+                console.log(result[0][0]);
+
+                // (
+                //     // id_ticket
+                //     ticket_descripcion,
+                //     id_cliente,
+                //     ticket_tipo,
+                //     ticket_estado,
+                //     ticket_prioridad,
+                //     id_grupo,
+                //     ticket_asunto,
+                //     id_averia,
+                //     ticket_programa,
+                //     // id_chat,
+                //     ticket_titulo
+                // )
+
+                await ticket.SetTicket(
+                    item.text, 
+                    result[0][0].idusuario, 
+                    'Averia', 
+                    'Abierto', 
+                    'Baja', 
+                    1, 
+                    item.subject, 
+                    1,
+                    'N/A',
+                    item.subject
+                );
+            }));
         });
 
         imap.connect(); // Conectar al servidor IMAP

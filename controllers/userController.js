@@ -96,21 +96,21 @@ exports.ForgotPassword = async (req, res, next) => {
     }
 }
 
-exports.ConfirmPassword = async (req, res, next) => {
-    try {
-        let { usuario_password, usuario_correo } = req.body;
-        let user = new userModel();
-        const result = await user.ChangePassword(usuario_password, usuario_correo);
-        res.status(200).send({ user: result });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send(
-        { 
-            error: 'Internal Server Error', 
-            message: error 
-        });
-    }
-}
+// exports.ConfirmPassword = async (req, res, next) => {
+//     try {
+//         let { usuario_password, usuario_correo } = req.body;
+//         let user = new userModel();
+//         const result = await user.ChangePassword(usuario_password, usuario_correo);
+//         res.status(200).send({ user: result });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send(
+//         { 
+//             error: 'Internal Server Error', 
+//             message: error 
+//         });
+//     }
+// }
 
 exports.ChangePassword = async (req, res, next) => {
     try {
