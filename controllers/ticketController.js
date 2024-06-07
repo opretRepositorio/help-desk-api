@@ -213,11 +213,11 @@ exports.UpdateTicket = async (req, res, next) => {
             ticket_prioridad, 
             id_grupo, 
             id_agente, 
-            id_cliente,
-            ticket_fecha_creacion,
+            // id_cliente,
+            // ticket_fecha_creacion,
             ticket_fecha_asignado, 
             ticket_fecha_resolucion, 
-            ticket_asunto 
+            // ticket_asunto 
         } = req.body;
         let ticket = new ticketModel();
         const result = await ticket.UpdateTicket(
@@ -228,11 +228,11 @@ exports.UpdateTicket = async (req, res, next) => {
             ticket_prioridad, 
             id_grupo, 
             id_agente, 
-            id_cliente,
-            ticket_fecha_creacion,
+            // id_cliente,
+            // ticket_fecha_creacion,
             ticket_fecha_asignado, 
             ticket_fecha_resolucion, 
-            ticket_asunto
+            // ticket_asunto
         );
         console.log(result);
         res.status(200).send({ ticket: result });
