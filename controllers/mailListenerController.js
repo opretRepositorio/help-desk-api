@@ -90,8 +90,9 @@ exports.MailListener = async (req, res, next) => {
                 
                 const setUserResult = await admin.SetUser(
                     usuario_nombre,
+                    usuario_codigo_correo, // usuario_codigo
                     usuario_codigo_correo,
-                    usuario_codigo_correo,
+                    'usuario', // usuario_tipo
                     ' ', // usuario_telefono
                     ' ', // usuario_celular
                     ' ', // usuario_cargo
