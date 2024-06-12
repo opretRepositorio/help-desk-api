@@ -36,19 +36,19 @@ class adminModel {
         usuario_codigo,
         usuario_correo,
         // usuario_password,
-        usuario_tipo,
         usuario_telefono,
         usuario_celular,
         usuario_cargo,
+        usuario_tipo,
     ){
         let [user, _] = await database.execute(`CALL sp_set_usuario (
             '${usuario_nombre}', 
             '${usuario_codigo}', 
             '${usuario_correo}', 
-            '${usuario_tipo}', 
             '${usuario_telefono}', 
             '${usuario_celular}', 
-            '${usuario_cargo}'
+            '${usuario_cargo}',
+            '${usuario_tipo}', 
         );`);
         
         return user;
