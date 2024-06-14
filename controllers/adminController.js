@@ -82,7 +82,7 @@ exports.SetUser = async (req, res, next) => {
             usuario_telefono,
             usuario_celular,
             usuario_cargo,
-            usuario_tipo,
+            usuario_tipo
             
         } = req.body;
         
@@ -95,7 +95,7 @@ exports.SetUser = async (req, res, next) => {
             usuario_telefono,
             usuario_celular,
             usuario_cargo ,
-            usuario_tipo,
+            usuario_tipo
         );
         console.log(result);
         res.status(200).send({ admin: result });
