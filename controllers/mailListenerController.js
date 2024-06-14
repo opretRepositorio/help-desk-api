@@ -6,7 +6,7 @@ const userModel = require('../models/userModel');
 
 const imapConfig = {
     user: 'helpdeskopret@gmail.com',
-    password: 'pbrkhgoccjnsphks',
+    password: 'qfgvfyvwxjxntale',
     host: 'imap.gmail.com',
     port: 993,
     tls: true,
