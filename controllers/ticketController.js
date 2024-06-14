@@ -207,7 +207,7 @@ exports.UpdateTicket = async (req, res, next) => {
     try {
         let { 
             id_ticket,
-            ticket_descripcion, 
+            //ticket_descripcion, 
             ticket_tipo, 
             ticket_estado, 
             ticket_prioridad, 
@@ -222,7 +222,7 @@ exports.UpdateTicket = async (req, res, next) => {
         let ticket = new ticketModel();
         const result = await ticket.UpdateTicket(
             id_ticket,
-            ticket_descripcion, 
+           // ticket_descripcion, 
             ticket_tipo, 
             ticket_estado, 
             ticket_prioridad, 
