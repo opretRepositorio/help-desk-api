@@ -79,10 +79,11 @@ exports.SetUser = async (req, res, next) => {
             usuario_codigo,
             usuario_correo,
             // usuario_password,
-            usuario_tipo,
             usuario_telefono,
             usuario_celular,
-            usuario_cargo  
+            usuario_cargo,
+            usuario_tipo,
+            
         } = req.body;
         
         let admin = new adminModel();
@@ -91,10 +92,10 @@ exports.SetUser = async (req, res, next) => {
             usuario_codigo,
             usuario_correo,
             // usuario_password,
-            usuario_tipo,
             usuario_telefono,
             usuario_celular,
-            usuario_cargo  
+            usuario_cargo ,
+            usuario_tipo,
         );
         console.log(result);
         res.status(200).send({ admin: result });

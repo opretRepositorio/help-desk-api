@@ -76,7 +76,7 @@ exports.MailListener = async (req, res, next) => {
 
         imap.once('end', async () => {
             console.log(unseenMessages);
-            res.json(unseenMessages);  // Enviar los mensajes no leídos como respuesta JSON
+
             console.log('Connection ended');
 
             let ticket = new ticketModel();
