@@ -60,7 +60,7 @@ class adminModel {
             service: 'gmail',
             auth: {
                 user: 'helpdeskopret@gmail.com',
-                pass: 'pbrkhgoccjnsphks'
+                pass: 'qfgvfyvwxjxntale'
             }
         });
 
