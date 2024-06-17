@@ -188,9 +188,39 @@ exports.GetTicketByTicketPrioridad = async (req, res, next) => {
 
 exports.SetTicket = async (req, res, next) => {
     try {
-        let { ticket_descripcion, id_cliente, ticket_tipo, ticket_estado, ticket_prioridad, id_grupo, id_agente, ticket_fecha_creacion, ticket_fecha_asignado, ticket_fecha_resolucion, ticket_asunto, id_averia, ticket_programa, ticket_titulo } = req.body;
+        let { 
+            ticket_descripcion, 
+            id_cliente, 
+            ticket_tipo, 
+            ticket_estado, 
+            ticket_prioridad, 
+            id_grupo, 
+            // id_agente, 
+            // ticket_fecha_creacion, 
+            // ticket_fecha_asignado, 
+            // ticket_fecha_resolucion, 
+            ticket_asunto, 
+            id_averia, 
+            ticket_programa, 
+            ticket_titulo 
+        } = req.body;
         let ticket = new ticketModel();
-        const result = await ticket.SetTicket(ticket_descripcion, id_cliente, ticket_tipo, ticket_estado, ticket_prioridad, id_grupo, id_agente, ticket_fecha_creacion, ticket_fecha_asignado, ticket_fecha_resolucion, ticket_asunto, id_averia, ticket_programa, ticket_titulo);
+        const result = await ticket.SetTicket(
+            ticket_descripcion, 
+            id_cliente, 
+            ticket_tipo, 
+            ticket_estado, 
+            ticket_prioridad, 
+            id_grupo, 
+            // id_agente, 
+            // ticket_fecha_creacion, 
+            // ticket_fecha_asignado, 
+            // ticket_fecha_resolucion, 
+            ticket_asunto, 
+            id_averia, 
+            ticket_programa, 
+            ticket_titulo
+        );
         console.log(result);
         res.status(200).send({ ticket: result });
     } catch (error) {
