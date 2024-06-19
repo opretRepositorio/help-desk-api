@@ -201,3 +201,24 @@ exports.EditUser = async (req, res, next) => {
             });
     }
 }
+
+exports.DeleteUser = async (req, res, next) => {
+    try {
+        let { 
+            id_usuario
+        } = req.body;
+        let admin = new adminModel();
+        const result = await admin.DeleteUser(
+            id_usuario
+        );
+        console.log(result);
+        res.status(200).send({ user: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
+    }
+}

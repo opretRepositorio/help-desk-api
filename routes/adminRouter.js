@@ -32,5 +32,8 @@ admin_router.route("/register/update_token").patch(admin_controller.UpdateToken)
 // Router para actualizar los datos de dicho usuario por POST
 admin_router.route("/update/edit_user").patch(admin_controller.EditUser);
 
+// Router para eliminar los datos de dicho usuario por POST
+admin_router.route("/delete/delete_user").delete(admin_controller.DeleteUser);
+
 // module para exportar admin_router, acceso publico a otros modulos
 module.exports = admin_router;

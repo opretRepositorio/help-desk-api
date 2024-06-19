@@ -134,6 +134,15 @@ class adminModel {
         
         return _user;
     }
+
+    // Elimina los datos dicho usuario
+    async DeleteUser(
+        id_usuario
+    ){
+        let [_user, _] = await database.execute(`CALL sp_delete_usuario (${id_usuario});`);
+        
+        return _user;
+    }
 }
 
 module.exports = adminModel; 
