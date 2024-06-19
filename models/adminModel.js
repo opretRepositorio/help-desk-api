@@ -111,13 +111,13 @@ class adminModel {
     // Actualiza los datos dicho usuario
     async EditUser(
         id_usuario,
-        usuario_nombre,
-        usuario_codigo,
-        usuario_correo,
-        usuario_telefono,
-        usuario_celular,
-        usuario_cargo,
-        usuario_tipo
+        usuario_nombre = null,
+        usuario_codigo = null,
+        usuario_correo = null,
+        usuario_telefono = null,
+        usuario_celular = null,
+        usuario_cargo = null,
+        usuario_tipo  = null
     ){
         let [_user, _] = await database.execute(`CALL sp_update_usuario (
             '${id_usuario}',
