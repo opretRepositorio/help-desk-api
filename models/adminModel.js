@@ -117,7 +117,8 @@ class adminModel {
         usuario_telefono = null,
         usuario_celular = null,
         usuario_cargo = null,
-        usuario_tipo  = null
+        usuario_tipo  = null,
+        usuario_estado = -1
     ){
         let [_user, _] = await database.execute(`CALL sp_update_usuario (
             '${id_usuario}',
@@ -127,7 +128,8 @@ class adminModel {
             '${usuario_telefono}',
             '${usuario_celular}',
             '${usuario_cargo}',
-            '${usuario_tipo}'
+            '${usuario_tipo}',
+            '${usuario_estado}'
             );`);
         
         return _user;
