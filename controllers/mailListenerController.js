@@ -6,7 +6,7 @@ const userModel = require('../models/userModel');
 
 const imapConfig = {
     user: 'helpdeskopret@gmail.com',
-    password: 'pbrkhgoccjnsphks',
+    password: 'qfgvfyvwxjxntale',
     host: 'imap.gmail.com',
     port: 993,
     tls: true,
@@ -76,7 +76,7 @@ exports.MailListener = async (req, res, next) => {
 
         imap.once('end', async () => {
             console.log(unseenMessages);
-            res.json(unseenMessages);  // Enviar los mensajes no leídos como respuesta JSON
+
             console.log('Connection ended');
 
             let ticket = new ticketModel();

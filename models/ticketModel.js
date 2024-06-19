@@ -78,7 +78,7 @@ class ticketModel {
         ticket_estado,
         ticket_prioridad,
         id_grupo,
-        // id_agente,
+        id_agente,
         // ticket_fecha_creacion,
         // ticket_fecha_asignado,
         // ticket_fecha_resolucion,
@@ -95,6 +95,7 @@ class ticketModel {
             '${ticket_estado}', 
             '${ticket_prioridad}', 
             '${id_grupo}',
+            '${id_agente}',
             '${ticket_asunto}',
             '${id_averia}', 
             '${ticket_programa}',
@@ -106,7 +107,7 @@ class ticketModel {
     // Actualiza las caracteristicas del ticket en el sistema
     async UpdateTicket(
         id_ticket,
-        ticket_descripcion,
+        //ticket_descripcion,
         ticket_tipo,
         ticket_estado,
         ticket_prioridad,
@@ -118,7 +119,7 @@ class ticketModel {
         ticket_fecha_resolucion,
         // ticket_asunto,
     ){
-        let [ticket, _] = await database.execute(`CALL sp_update_ticket ('${id_ticket}', '${ticket_descripcion}', '${ticket_tipo}', '${ticket_estado}', '${ticket_prioridad}', '${id_grupo}', '${id_agente}', '${ticket_fecha_asignado}', '${ticket_fecha_resolucion}');`);
+        let [ticket, _] = await database.execute(`CALL sp_update_ticket ('${id_ticket}', '${ticket_tipo}', '${ticket_estado}', '${ticket_prioridad}', '${id_grupo}', '${id_agente}', '${ticket_fecha_asignado}', '${ticket_fecha_resolucion}');`);
         return ticket;
     }
 }

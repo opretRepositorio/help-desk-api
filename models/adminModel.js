@@ -39,7 +39,7 @@ class adminModel {
         usuario_telefono,
         usuario_celular,
         usuario_cargo,
-        usuario_tipo,
+        usuario_tipo
     ){
         let [user, _] = await database.execute(`CALL sp_set_usuario (
             '${usuario_nombre}', 
@@ -48,7 +48,7 @@ class adminModel {
             '${usuario_telefono}', 
             '${usuario_celular}', 
             '${usuario_cargo}',
-            '${usuario_tipo}', 
+            '${usuario_tipo}'
         );`);
         
         return user;
@@ -60,7 +60,7 @@ class adminModel {
             service: 'gmail',
             auth: {
                 user: 'helpdeskopret@gmail.com',
-                pass: 'pbrkhgoccjnsphks'
+                pass: 'qfgvfyvwxjxntale'
             }
         });
 
