@@ -23,11 +23,14 @@ admin_router.route("/register/set_user").post(admin_controller.SetUser);
 // Router envia link de registro por correo electronico para crear usuario con POST
 admin_router.route("/register/send_link").post(admin_controller.SendRegisterLink);
 
-// Router para validar token si puede o no finalizar proceso de nuevo usuario
+// Router para validar token si puede o no finalizar proceso de nuevo usuario por POST
 admin_router.route("/register/validate_token").post(admin_controller.ValidateTokenExpiration);
 
-// Router para actualizar token y finalizar proceso de nuevo usuario
-admin_router.route("/register/update_token").post(admin_controller.UpdateToken);
+// Router para actualizar token y finalizar proceso de nuevo usuario por POST
+admin_router.route("/register/update_token").patch(admin_controller.UpdateToken);
+
+// Router para actualizar los datos de dicho usuario por POST
+admin_router.route("/update/edit_user").patch(admin_controller.EditUser);
 
 // module para exportar admin_router, acceso publico a otros modulos
 module.exports = admin_router;

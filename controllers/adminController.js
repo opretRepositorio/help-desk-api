@@ -161,3 +161,39 @@ exports.UpdateToken = async (req, res, next) => {
             });
     }
 }
+
+
+exports.EditUser = async (req, res, next) => {
+    try {
+        let { 
+            id_usuario,
+            usuario_nombre,
+            usuario_codigo,
+            usuario_correo,
+            usuario_telefono,
+            usuario_celular,
+            usuario_cargo,
+            usuario_tipo
+        } = req.body;
+        let admin = new adminModel();
+        const result = await admin.EditUser(
+            id_usuario,
+            usuario_nombre,
+            usuario_codigo,
+            usuario_correo,
+            usuario_telefono,
+            usuario_celular,
+            usuario_cargo,
+            usuario_tipo
+        );
+        console.log(result);
+        res.status(200).send({ user: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(
+            { 
+                error: 'Internal Server Error', 
+                message: error 
+            });
+    }
+}

@@ -107,6 +107,31 @@ class adminModel {
         
         return _token;
     }
+
+    // Actualiza los datos dicho usuario
+    async EditUser(
+        id_usuario,
+        usuario_nombre,
+        usuario_codigo,
+        usuario_correo,
+        usuario_telefono,
+        usuario_celular,
+        usuario_cargo,
+        usuario_tipo
+    ){
+        let [_user, _] = await database.execute(`CALL sp_update_usuario (
+            '${id_usuario}',
+            '${usuario_nombre}',
+            '${usuario_codigo}',
+            '${usuario_correo}',
+            '${usuario_telefono}',
+            '${usuario_celular}',
+            '${usuario_cargo}',
+            '${usuario_tipo}'
+            );`);
+        
+        return _user;
+    }
 }
 
 module.exports = adminModel; 

@@ -21,7 +21,7 @@ mensaje_router.route("/get_mensaje/by_nota_fecha").post(mensaje_controller.GetMe
 mensaje_router.route("/set_mensaje").post(mensaje_controller.SetMensaje);
 
 // Router actualiza mensaje visto con POST
-mensaje_router.route("/update_mensaje_visto").post(mensaje_controller.UpdateMensajeVisto);
+mensaje_router.route("/update_mensaje_visto").patch(mensaje_controller.UpdateMensajeVisto);
 
 // module para exportar nota_usuario_router, acceso publico a otros modulos 
 module.exports = mensaje_router;
