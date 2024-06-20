@@ -56,9 +56,9 @@ exports.GetUser = async (req, res, next) => {
 
 exports.ConfirmPassword = async (req, res, next) => {
     try {
-        let { usuario_password, usuario_correo } = req.body;
+        let { usuario_password, usuario_correo, usuario_estado } = req.body;
         let user = new userModel();
-        const result = await user.ChangePassword(usuario_password, usuario_correo);
+        const result = await user.ChangePassword(usuario_password, usuario_correo, usuario_estado);
         
         res.status(200).send({ user: result });
     } catch (error) {
