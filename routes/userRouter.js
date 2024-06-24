@@ -24,4 +24,4 @@ user_router.route("/get_user/change_password").post(user_controller.ChangePasswo
 user_router.route("/get_user/match_recovery_code").post(user_controller.MatchRecoveryCode);
 
 // module para exportar user_router, acceso publico a otros modulos
-module.exports = user_router;
+module.exports = user_router; 

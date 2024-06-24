@@ -28,10 +28,10 @@ exports.GetUserById = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -46,10 +46,10 @@ exports.GetUserByCodigoUsuario = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -64,10 +64,10 @@ exports.GetUserByCorreoUsuario = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -104,10 +104,10 @@ exports.SetUser = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -122,10 +122,10 @@ exports.SendRegisterLink = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -135,15 +135,16 @@ exports.ValidateTokenExpiration = async (req, res, next) => {
         let { token } = req.body;
         let admin = new adminModel();
         const result = await admin.ValidateTokenExpiration(token);
+        console.log({ token: true, email: result[0][0].user_email })
         res.status(200).send({ token: true, email: result[0][0].user_email });
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                token: false,
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            token: false,
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -157,10 +158,10 @@ exports.UpdateToken = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -195,10 +196,10 @@ exports.EditUser = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }
 
@@ -216,9 +217,9 @@ exports.DeleteUser = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(
-            { 
-                error: 'Internal Server Error', 
-                message: error 
-            });
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
     }
 }

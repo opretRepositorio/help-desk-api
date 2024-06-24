@@ -30,7 +30,7 @@ class informeModel {
     // Obtiene grupo por nombre
     async GetInformeByFecha(fecha){
         let [informe, _] = await database.execute(`CALL sp_get_informe_by_fecha ('${fecha}');`);
-        return informe;9
+        return informe;
     }
 
     // Inserta o registra a la base de datos una nueva nota relacionado al ticket
