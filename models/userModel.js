@@ -42,6 +42,12 @@ class userModel {
         return users;
     }
 
+    // Obtiene dicho usuario por id del sistema
+    async GetUserById(id_usuario){
+        let [users, _] = await database.execute(`CALL sp_get_usuario_by_id(${id_usuario});`);
+        return users;
+    }
+
     // Todos los usuarios del sistema por tipo de usuario
     async GetUsersByTipo(usuario_tipo){
         let [users, _] = await database.execute(`CALL sp_get_usuarios_by_tipo('${usuario_tipo}');`);

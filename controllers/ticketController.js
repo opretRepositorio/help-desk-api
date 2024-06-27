@@ -203,9 +203,9 @@ exports.SetTicket = async (req, res, next) => {
             id_averia, 
             ticket_programa, 
             ticket_titulo 
-        } = req.body;
-        let ticket = new ticketModel();
-        const result = await ticket.SetTicket(
+        } = req.body; 
+        let ticket = new ticketModel(); 
+        const result = await ticket.SetTicket( 
             ticket_descripcion, 
             id_cliente, 
             ticket_tipo, 

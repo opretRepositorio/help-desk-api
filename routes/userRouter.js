@@ -5,6 +5,9 @@ const user_router = express.Router();
 // Router obtiene todos los usuarios con GET
 user_router.route("/get_users").get(user_controller.GetUsers);
 
+// Router obtiene todos los usuarios por id con GET
+user_router.route("/get_user_by_id").post(user_controller.GetUserById);
+
 // Router obtiene usuario por userName y password con POST
 user_router.route("/get_user/login").post(user_controller.GetUser);
 

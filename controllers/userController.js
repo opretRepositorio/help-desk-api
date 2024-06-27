@@ -18,6 +18,24 @@ exports.GetUsers = async (req, res, next) => {
     }
 }
 
+// Controlador que obtiene usuario por id de la base de datos
+exports.GetUserById = async (req, res, next) => {
+    try {
+        let { id_usuario } = req.body;
+        let users = new userModel();
+        const result = await users.GetUserById(id_usuario);
+        console.log(result[0]);
+        res.status(200).send({ users: result[0] });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
+    }
+}
+
 // Controlador que obtiene todos los usuario por usuario_tipo de la base de datos
 exports.GetUsersByTipo = async (req, res, next) => {
     try {
