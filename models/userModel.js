@@ -94,7 +94,7 @@ class userModel {
     }
 
     // funcion asincronica para cambiar de la password del usuario
-    async ChangePassword(usuario_password, usuario_correo, usuario_estado = 0){
+    async ChangePassword(usuario_password, usuario_correo, usuario_estado = 1){
         let [user, _] = await database.execute(`CALL sp_update_change_password('${usuario_password}', '${usuario_correo}', '${usuario_estado}');`);
         return user;
     }                      
