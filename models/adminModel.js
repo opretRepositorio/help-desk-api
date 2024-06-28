@@ -143,6 +143,15 @@ class adminModel {
         
         return _user;
     }
+
+    // Habilita / Deshabilita la llave fore
+    async UpdateUsuarioForeignKey(
+        status
+    ){
+        let [_user, _] = await database.execute(`CALL sp_update_foreign_usuario (${status});`);
+        
+        return _user;
+    }
 }
 
 module.exports = adminModel; 

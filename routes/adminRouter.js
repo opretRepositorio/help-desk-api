@@ -35,5 +35,8 @@ admin_router.route("/update/edit_user").patch(admin_controller.EditUser);
 // Router para eliminar los datos de dicho usuario por POST
 admin_router.route("/delete/delete_user").delete(admin_controller.DeleteUser);
 
+// Router para habilitar/deshabilitar llave foranea en la tabla usuario por POST
+admin_router.route("/update/foreign_key_status").delete(admin_controller.UpdateUsuarioForeignKey);
+
 // module para exportar admin_router, acceso publico a otros modulos
 module.exports = admin_router;

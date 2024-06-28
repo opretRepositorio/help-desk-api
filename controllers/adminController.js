@@ -223,3 +223,24 @@ exports.DeleteUser = async (req, res, next) => {
         });
     }
 }
+
+exports.UpdateUsuarioForeignKey = async (req, res, next) => {
+    try {
+        let { 
+            status
+        } = req.body;
+        let admin = new adminModel();
+        const result = await admin.UpdateUsuarioForeignKey(
+            status
+        );
+        console.log(result);
+        res.status(200).send({ user: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(
+        { 
+            error: 'Internal Server Error', 
+            message: error 
+        });
+    }
+}
