@@ -206,10 +206,12 @@ exports.EditUser = async (req, res, next) => {
 exports.DeleteUser = async (req, res, next) => {
     try {
         let { 
+            required_admin_id,
             id_usuario
         } = req.body;
         let admin = new adminModel();
         const result = await admin.DeleteUser(
+            required_admin_id,
             id_usuario
         );
         console.log(result);

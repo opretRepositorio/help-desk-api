@@ -137,9 +137,10 @@ class adminModel {
 
     // Elimina los datos dicho usuario
     async DeleteUser(
+        required_admin_id,
         id_usuario
     ){
-        let [_user, _] = await database.execute(`CALL sp_delete_usuario (${id_usuario});`);
+        let [_user, _] = await database.execute(`CALL sp_delete_usuario (${required_admin_id}, ${id_usuario});`);
         
         return _user;
     }
